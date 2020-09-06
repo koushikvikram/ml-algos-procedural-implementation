@@ -28,11 +28,11 @@ def get_dataset_minmax(dataset: List[List], columns_list=True) -> dict:
     return minmax
 
 
-def norm(value: float, min: int, max: int) -> float:
+def norm(value: float, minimum: int, maximum: int) -> float:
     """
     return the norm of the value
     """
-    return (value-min) / (max-min)
+    return (value-minimum) / (maximum-minimum)
 
 
 def normalize_dataset(dataset: List[List], columns_list=True) -> None:
@@ -68,9 +68,9 @@ def get_mean_std_dataset(dataset: List[List], columns_list=True) -> dict:
         column_indices = columns_list
     for col_index in column_indices:
         col_values: List = [row[col_index] for row in dataset]
-        N: float = float(len(col_values))
-        col_mean: float = sum(col_values) / N
-        col_std: float = sqrt(sum((x-col_mean)**2 for x in col_values) / N)
+        num_values: float = float(len(col_values))
+        col_mean: float = sum(col_values) / num_values
+        col_std: float = sqrt(sum((x-col_mean)**2 for x in col_values) / num_values)
         mean_std[col_index]: tuple = (col_mean, col_std)
     return mean_std
 
@@ -130,26 +130,26 @@ def str_column_to_float(dataset: List[List], column_index: int) -> None:
 # ---- load the dataset and explore a sample ----
 filepath: str = "../datasets/pima-indians-diabetes.csv"
 data: List[List] = load_csv(filepath)
-print("\n[INFO] Loaded dataset '{}' with {} rows and {} columns\n".format(filepath.split("/")[-1], len(data), len(data[0])))
+print("\n[INFO] Loaded dataset '{}' with {} rows and {} columns\n"
+      .format(filepath.split("/")[-1], len(data), len(data[0])))
 print("Sample row from dataset:\n{}\n".format(data[0]))
 
 
 # ---- pre-process the dataset ----
 # convert all columns from string to float
-for col_index in range(len(data[0])):
-    str_column_to_float(data, col_index)
+for index in range(len(data[0])):
+    str_column_to_float(data, index)
 print("Sample row from dataset after datatype conversion:\n{}\n".format(data[0]))
 
 
 # ---- normalize all columns in the dataset ----
-minmax_lookup: dict = get_dataset_minmax(data)
 normalize_dataset(data)
 print("Sample row from dataset after normalization:\n{}\n".format(data[0]))
 
 
 # load dataset again, preprocess and standardize columns
 data: List[List] = load_csv(filepath)
-for col_index in range(len(data[0])):
-    str_column_to_float(data, col_index)
+for index in range(len(data[0])):
+    str_column_to_float(data, index)
 standardize_dataset(data)
 print("Sample row from dataset after standardization:\n{}\n".format(data[0]))
