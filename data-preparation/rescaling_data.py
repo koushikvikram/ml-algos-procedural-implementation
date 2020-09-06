@@ -40,8 +40,14 @@ def normalize_dataset(dataset: List[List], columns_list=True) -> None:
     normalize the columns in the dataset
     """
     minmax_lookup: dict = get_dataset_minmax(dataset, columns_list)
+    if columns_list:
+        # choose all columns
+        column_indices = range(len(dataset[0]))
+    else:
+        # choose only the specified columns
+        column_indices = columns_list
     for row in dataset:
-        for col_index in columns_list:
+        for col_index in column_indices:
             col_value: int = row[col_index]
             col_min: float = minmax_lookup[col_index][0]
             col_max: float = minmax_lookup[col_index][1]
@@ -81,8 +87,14 @@ def standardize_dataset(dataset: List[List], columns_list=True) -> None:
     standardize the columns in the dataset
     """
     mean_std_lookup: dict = get_mean_std_dataset(dataset, columns_list)
+    if columns_list:
+        # choose all columns
+        column_indices = range(len(dataset[0]))
+    else:
+        # choose only the specified columns
+        column_indices = columns_list
     for row in dataset:
-        for col_index in columns_list:
+        for col_index in column_indices:
             col_value: float = row[col_index]
             col_mean: float = mean_std_lookup[col_index][0]
             col_std: float = mean_std_lookup[col_index][1]
@@ -131,7 +143,13 @@ print("Sample row from dataset after datatype conversion:\n{}\n".format(data[0])
 
 # ---- normalize all columns in the dataset ----
 minmax_lookup: dict = get_dataset_minmax(data)
-normalize_dataset(data, minmax_lookup)
+normalize_dataset(data)
 print("Sample row from dataset after normalization:\n{}\n".format(data[0]))
 
 
+# load dataset again, preprocess and standardize columns
+data: List[List] = load_csv(filepath)
+for col_index in range(len(data[0])):
+    str_column_to_float(data, col_index)
+standardize_dataset(data)
+print("Sample row from dataset after standardization:\n{}\n".format(data[0]))
