@@ -81,8 +81,8 @@ def rmse_metric(actual: List, predicted: List) -> float:
 y: List = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
 y_hat: List = [0, 1, 0, 0, 0, 1, 0, 1, 1, 1]
 
-y_reg = [0.1, 0.2, 0.3, 0.4, 0.5]
-y_reg_hat = [0.11, 0.19, 0.29, 0.41, 0.5]
+y_reg: List = [0.1, 0.2, 0.3, 0.4, 0.5]
+y_reg_hat: List = [0.11, 0.19, 0.29, 0.41, 0.5]
 
 unique_values, conf_matrix = confusion_matrix(y, y_hat)
 
