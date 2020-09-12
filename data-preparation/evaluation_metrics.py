@@ -26,11 +26,12 @@ def accuracy(actual: List, predicted: List) -> float:
 
 def num_pair_occurrence(pair: tuple, actual: List, predicted: List) -> int:
     """
-    get the count of first element in pair occurring in actual and second element of pair occurring in predicted
+    get the count of first element in pair occurring in actual
+    and second element of pair occurring in predicted
     """
-    count = 0
-    for i in range(len(actual)):
-        if actual[i] == pair[0] and predicted[i] == pair[1]:
+    count: int = 0
+    for i, expected in enumerate(actual):
+        if expected == pair[0] and predicted[i] == pair[1]:
             count += 1
     return count
 
@@ -39,10 +40,10 @@ def confusion_matrix(actual: List, predicted: List) -> tuple:
     """
     returns the set of unique values as well as the confusion matrix
     """
-    unique = set(actual)
-    matrix = list()
+    unique: set = set(actual)
+    matrix: List = list()
     for i in unique:
-        row = list()
+        row: List = list()
         for j in unique:
             row.append(num_pair_occurrence((i, j), actual, predicted))
         matrix.append(row)
@@ -53,18 +54,18 @@ def print_confusion_matrix(unique: set, matrix: List) -> None:
     """
     Pretty prints confusion matrix - works for binary classification
     """
-    print("(P)" + " ".join(str(x) for x in unique))
+    print("(P)" + " ".join(str(value) for value in unique))
     print("(A)---")
-    for i, x in enumerate(unique):
-        print("{}| {}".format(x, ' '.join(str(x) for x in matrix[i])))
+    for i, value in enumerate(unique):
+        print("{}| {}".format(value, ' '.join(str(value) for value in matrix[i])))
 
 
 def mae_metric(actual: List, predicted: List) -> float:
     """
     returns the mean absolute error
     """
-    num_predictions = len(predicted)
-    total_abs_error = sum(abs(predicted[i]-actual[i]) for i in range(num_predictions))
+    num_predictions: int = len(predicted)
+    total_abs_error: float = sum(abs(predicted[i]-actual[i]) for i in range(num_predictions))
     return total_abs_error/float(num_predictions)
 
 
@@ -72,8 +73,8 @@ def rmse_metric(actual: List, predicted: List) -> float:
     """
     returns the root mean squared error
     """
-    num_predictions = len(predicted)
-    total_squared_error = sum((predicted[i]-actual[i])**2 for i in range(num_predictions))
+    num_predictions: int = len(predicted)
+    total_squared_error: float = sum((predicted[i]-actual[i])**2 for i in range(num_predictions))
     return sqrt(total_squared_error/float(num_predictions))
 
 
