@@ -15,8 +15,8 @@ def random_algorithm(train: List, test: List) -> List:
     returns a list of random predictions for the test set
     works for both regression and classification
     """
-    possible_predictions: list = list(set(row[-1] for row in train))
-    predicted_values: list = [choice(possible_predictions) for i in range(len(test))]
+    possible_predictions: List = list(set(row[-1] for row in train))
+    predicted_values: List = [choice(possible_predictions) for i in range(len(test))]
     return predicted_values
 
 
