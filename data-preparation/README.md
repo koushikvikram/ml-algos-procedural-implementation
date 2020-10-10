@@ -6,8 +6,8 @@
 * [Convert class values from a file to integers](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/load_from_csv.py#L44-L50)
 
 ## 2. [Scale Machine Learning Data](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/rescaling_data.py)
-* [Normalizing data]()
-* [Standardizing data]()
+* [Normalizing data](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/rescaling_data.py#L41-L58)
+* [Standardizing data](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/rescaling_data.py#L88-L105)
 
 ## 3. [Algorithm Evaluation Methods](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/algo_validation_methods.py)
 * [Train-Test Split]()
