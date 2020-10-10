@@ -10,8 +10,8 @@
 * [Standardizing data](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/rescaling_data.py#L88-L105)
 
 ## 3. [Algorithm Evaluation Methods](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/algo_validation_methods.py)
-* [Train-Test Split]()
-* [k-fold Cross Validation Split]()
+* [Train-Test Split](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/algo_validation_methods.py#L13-L24)
+* [k-fold Cross Validation Split](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/algo_validation_methods.py#L27-L39)
 
 ## 4. [Evaluation Metrics](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py)
 * [Classification accuracy]()
