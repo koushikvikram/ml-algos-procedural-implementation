@@ -8,7 +8,7 @@ from typing import List, Dict
 
 def load_csv(filename: str) -> List[List]:
     """
-    loads the csv file returns it as a list of lists
+    load the csv file as a list of lists
     """
     dataset: List = list()
     with open(filename, "r") as file:
@@ -24,7 +24,7 @@ def load_csv(filename: str) -> List[List]:
 # functions for pre-processing data
 def get_column_encodings(dataset: List[List], column_index: int) -> Dict[str, int]:
     """
-    returns a lookup table for with numbers corresponding to categories in a given column
+    generate a lookup table of {column name 1: encoding 1, column name 2: encoding 2, ..., column name N: encoding N}
     """
     categories = set()
     for row in dataset:
@@ -35,7 +35,7 @@ def get_column_encodings(dataset: List[List], column_index: int) -> Dict[str, in
 
 def str_column_to_float(dataset: List[List], column_index: int) -> None:
     """
-    Convert the entire column inplace in the dataset from string to float
+    modify the column's values from string -> float
     """
     for row in dataset:
         row[column_index]: float = float(row[column_index].strip())
@@ -43,7 +43,7 @@ def str_column_to_float(dataset: List[List], column_index: int) -> None:
 
 def encode_column_to_int(dataset: List[List], column_index: int) -> None:
     """
-    Convert the entire column inplace in the dataset from string to int
+    modify the column's values from string -> int
     """
     encoder: Dict[str, int] = get_column_encodings(dataset, column_index)
     for row in dataset:
