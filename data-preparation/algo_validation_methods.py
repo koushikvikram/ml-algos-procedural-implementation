@@ -12,7 +12,7 @@ from typing import List, Tuple
 # define methods for validation
 def train_test_split(dataset: List[List], split: float = 0.7) -> Tuple[List, List]:
     """
-    shuffles dataset, splits it into training and test set
+    shuffles dataset, splits into training and test set
     training set is split% of entire dataset
     """
     row_indices = list(range(len(dataset)))
@@ -26,7 +26,7 @@ def train_test_split(dataset: List[List], split: float = 0.7) -> Tuple[List, Lis
 
 def cross_validation_split(dataset: List[List], k: int = 3) -> List[List[List]]:
     """
-    shuffles dataset, splits it into 'k' eaual parts
+    shuffles dataset, splits into 'k' eaual parts
     """
     shuffle(dataset)
     split_dataset = list()
