@@ -1,5 +1,7 @@
 """
-Rescaling data - normalization and standardization
+Rescaling data
+- normalization
+- standardization
 """
 
 from typing import List, Tuple, Dict
@@ -10,7 +12,7 @@ from math import sqrt
 # functions for rescaling features
 def get_dataset_minmax(dataset: List[List], columns_list=True) -> Dict[int, Tuple[float, float]]:
     """
-    get the minimum and maximum values of the specified columns in the dataset
+    get minimum and maximum values of specified columns
     if columns_list is not specified, get minimum and maximum for all columns
     """
     minmax = dict()
@@ -30,14 +32,15 @@ def get_dataset_minmax(dataset: List[List], columns_list=True) -> Dict[int, Tupl
 
 def norm(value: float, minimum: int, maximum: int) -> float:
     """
-    return the norm of the value
+    norm = (value-min) / (max-min)
+    i.e. bring value within the range (0, 1)
     """
     return (value-minimum) / (maximum-minimum)
 
 
 def normalize_dataset(dataset: List[List], columns_list=True) -> None:
     """
-    normalize the columns in the dataset
+    for each column, convert values to the range (0, 1)
     """
     minmax_lookup: Dict[int, Tuple[float, float]] = get_dataset_minmax(dataset, columns_list)
     if columns_list:
@@ -57,7 +60,7 @@ def normalize_dataset(dataset: List[List], columns_list=True) -> None:
 
 def get_mean_std_dataset(dataset: List[List], columns_list=True) -> Dict[int, Tuple[float, float]]:
     """
-    get the mean and standard deviation of the specified columns in the dataset
+    get mean and standard deviation of the specified columns in the dataset
     if columns_list is not specified, get for all columns
     """
     mean_std = dict()
@@ -77,7 +80,7 @@ def get_mean_std_dataset(dataset: List[List], columns_list=True) -> Dict[int, Tu
 
 def standardize_value(value: float, mean: float, std_deviation: float) -> float:
     """
-    Standardize the value with respect to it's column and return it
+    standardized value = (given value - column's mean) / (column's standard deviation)
     """
     return (value - mean) / (std_deviation)
 
@@ -105,7 +108,7 @@ def standardize_dataset(dataset: List[List], columns_list=True) -> None:
 # Define functions for loading data
 def load_csv(filename: str) -> List[List]:
     """
-    Loads the csv file and returns a list of lists
+    Loads the csv file as a list of lists
     """
     dataset: List = list()
     with open(filename, "r") as file:
@@ -121,7 +124,7 @@ def load_csv(filename: str) -> List[List]:
 # Define functions for pre-processing data
 def str_column_to_float(dataset: List[List], column_index: int) -> None:
     """
-    Convert the entire column inplace in the dataset from string to float
+    Converts given column from string -> float
     """
     for row in dataset:
         row[column_index] = float(row[column_index].strip())
