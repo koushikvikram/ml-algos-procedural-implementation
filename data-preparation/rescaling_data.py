@@ -2,13 +2,13 @@
 Rescaling data - normalization and standardization
 """
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 from csv import reader
 from math import sqrt
 
 
 # functions for rescaling features
-def get_dataset_minmax(dataset: List[List], columns_list=True) -> dict:
+def get_dataset_minmax(dataset: List[List], columns_list=True) -> Dict[int, Tuple[float, float]]:
     """
     get the minimum and maximum values of the specified columns in the dataset
     if columns_list is not specified, get minimum and maximum for all columns
@@ -39,7 +39,7 @@ def normalize_dataset(dataset: List[List], columns_list=True) -> None:
     """
     normalize the columns in the dataset
     """
-    minmax_lookup: dict = get_dataset_minmax(dataset, columns_list)
+    minmax_lookup: Dict[int, Tuple[float, float]] = get_dataset_minmax(dataset, columns_list)
     if columns_list:
         # choose all columns
         column_indices = range(len(dataset[0]))
@@ -55,7 +55,7 @@ def normalize_dataset(dataset: List[List], columns_list=True) -> None:
             row[col_index]: float = norm(col_value, col_min, col_max)
 
 
-def get_mean_std_dataset(dataset: List[List], columns_list=True) -> dict:
+def get_mean_std_dataset(dataset: List[List], columns_list=True) -> Dict[int, Tuple[float, float]]:
     """
     get the mean and standard deviation of the specified columns in the dataset
     if columns_list is not specified, get for all columns
@@ -86,7 +86,7 @@ def standardize_dataset(dataset: List[List], columns_list=True) -> None:
     """
     standardize the columns in the dataset
     """
-    mean_std_lookup: dict = get_mean_std_dataset(dataset, columns_list)
+    mean_std_lookup: Dict[int, Tuple[float, float]] = get_mean_std_dataset(dataset, columns_list)
     if columns_list:
         # choose all columns
         column_indices = range(len(dataset[0]))
