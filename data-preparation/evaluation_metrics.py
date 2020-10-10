@@ -61,7 +61,10 @@ def print_confusion_matrix(unique: set, matrix: List) -> None:
 
 def mae_metric(actual: List, predicted: List) -> float:
     """
-    returns the mean absolute error
+    error = predicted value - actual value
+    absolute error = absolute(error)
+    total absolute error = sum(absolute error) for all predictions
+    mean absolute error = total absolute error / number of predictions
     """
     num_predictions: int = len(predicted)
     total_abs_error: float = sum(abs(predicted[i]-actual[i]) for i in range(num_predictions))
@@ -70,7 +73,11 @@ def mae_metric(actual: List, predicted: List) -> float:
 
 def rmse_metric(actual: List, predicted: List) -> float:
     """
-    returns the root mean squared error
+    error = predicted - actual
+    squared error = error^2
+    total squared error = sum(squared error) for all predictions
+    mean squared error = total squared error / number of predictions
+    root mean squared error = sqrt(mean squared error)
     """
     num_predictions: int = len(predicted)
     total_squared_error: float = sum((predicted[i]-actual[i])**2 for i in range(num_predictions))
