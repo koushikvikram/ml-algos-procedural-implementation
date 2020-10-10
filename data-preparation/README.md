@@ -20,5 +20,5 @@
 * [Room Mean Squared Error for Regression](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py#L74-L84)
 
 ## 5. [Baseline Models](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/baseline_models.py)
-* [Random Prediction Algorithm]()
-* [Zero Rule Prediction Algorithm]()
+* [Random Prediction Algorithm](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/baseline_models.py#L13-L20)
+* [Zero Rule Prediction Algorithm](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/baseline_models.py#L23-L42)
