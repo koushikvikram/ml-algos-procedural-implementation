@@ -1,6 +1,6 @@
 # Procedural Implementation of Classic Machine Learning Algorithms
 
-# Data Preparation
+# [Data Preparation](https://github.com/koushikvikram/ml-algos-procedural-implementation/tree/master/data-preparation)
 
 ## 1. [Load Data From CSV](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/load_from_csv.py)
 * [Load a CSV file](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/load_from_csv.py#L9-L21)
