@@ -1,17 +1,19 @@
 """
-algorithm evaluation methods - train-test split, k-fold cross validation split
+Algorithm Evaluation Methods
+- train-test split
+- k-fold cross validation split
 """
 
 from math import floor
 from random import shuffle, seed
-from typing import List
+from typing import List, Tuple
 
 
 # define methods for validation
-def train_test_split(dataset: List[List], split: float = 0.7) -> tuple:
+def train_test_split(dataset: List[List], split: float = 0.7) -> Tuple[List, List]:
     """
-    shuffles dataset and splits it into training and test set,
-    where training set is split% of entire dataset
+    shuffles dataset, splits it into training and test set
+    training set is split% of entire dataset
     """
     row_indices = list(range(len(dataset)))
     shuffle(row_indices)
@@ -24,7 +26,7 @@ def train_test_split(dataset: List[List], split: float = 0.7) -> tuple:
 
 def cross_validation_split(dataset: List[List], k: int = 3) -> List[List[List]]:
     """
-    shuffles dataset and splits it into 'k' eaual parts
+    shuffles dataset, splits it into 'k' eaual parts
     """
     shuffle(dataset)
     split_dataset = list()

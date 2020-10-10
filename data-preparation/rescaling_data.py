@@ -2,7 +2,7 @@
 Rescaling data - normalization and standardization
 """
 
-from typing import List
+from typing import List, Tuple
 from csv import reader
 from math import sqrt
 
@@ -71,7 +71,7 @@ def get_mean_std_dataset(dataset: List[List], columns_list=True) -> dict:
         num_values: float = float(len(col_values))
         col_mean: float = sum(col_values) / num_values
         col_std: float = sqrt(sum((x-col_mean)**2 for x in col_values) / num_values)
-        mean_std[col_index]: tuple = (col_mean, col_std)
+        mean_std[col_index]: Tuple[float, float] = (col_mean, col_std)
     return mean_std
 
 

@@ -1,20 +1,20 @@
 """
-evaluation metrics for machine learning algorithms
-- accuracy = (correct predictions / total predictions) * 100
-- confusion matrix
-- mean absolute error = i=1 to n, summation(abs(predicted_i - actual_i))
+Evaluation metrics for machine learning algorithms.
+- Accuracy = (correct predictions / total predictions) * 100
+- Confusion Matrix
+- Mean Absolute Error = i=1 to n, summation(abs(predicted_i - actual_i))
                         / total predictions
-- root mean squared error = sqrt(i=1 to n, summation(abs(predicted_i - actual_i)**2)
+- Root Mean Squared Error = sqrt(i=1 to n, summation(abs(predicted_i - actual_i)**2)
                             / total predictions)
 """
 
-from typing import List
+from typing import List, Tuple
 from math import sqrt
 
 
 def accuracy(actual: List, predicted: List) -> float:
     """
-    calculates the accuracy of predictions
+    accuracy = % of correct predictions
     """
     num_correct: int = 0
     num_predictions: int = len(actual)
@@ -24,10 +24,9 @@ def accuracy(actual: List, predicted: List) -> float:
     return num_correct/float(num_predictions) * 100
 
 
-def num_pair_occurrence(pair: tuple, actual: List, predicted: List) -> int:
+def num_pair_occurrence(pair: Tuple[int, int], actual: List, predicted: List) -> int:
     """
-    get the count of first element in pair occurring in actual
-    and second element of pair occurring in predicted
+    number of times pair[0], pair[1] occur in actual and predicted respectively
     """
     count: int = 0
     for i, expected in enumerate(actual):
@@ -36,7 +35,7 @@ def num_pair_occurrence(pair: tuple, actual: List, predicted: List) -> int:
     return count
 
 
-def confusion_matrix(actual: List, predicted: List) -> tuple:
+def confusion_matrix(actual: List, predicted: List) -> Tuple[set, List[List]]:
     """
     returns the set of unique values as well as the confusion matrix
     """

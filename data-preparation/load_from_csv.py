@@ -3,7 +3,7 @@ examples for loading and pre-processing csv files
 """
 
 from csv import reader
-from typing import List
+from typing import List, Dict
 
 
 def load_csv(filename: str) -> List[List]:
@@ -22,14 +22,14 @@ def load_csv(filename: str) -> List[List]:
 
 
 # functions for pre-processing data
-def get_column_encodings(dataset: List[List], column_index: int) -> dict:
+def get_column_encodings(dataset: List[List], column_index: int) -> Dict[str, int]:
     """
     returns a lookup table for with numbers corresponding to categories in a given column
     """
     categories = set()
     for row in dataset:
         categories.add(row[column_index])
-    lookup_table: dict = dict(zip(categories, range(len(categories))))
+    lookup_table: Dict[str, int] = dict(zip(categories, range(len(categories))))
     return lookup_table
 
 
@@ -45,7 +45,7 @@ def encode_column_to_int(dataset: List[List], column_index: int) -> None:
     """
     Convert the entire column inplace in the dataset from string to int
     """
-    encoder: dict = get_column_encodings(dataset, column_index)
+    encoder: Dict[str, int] = get_column_encodings(dataset, column_index)
     for row in dataset:
         row[column_index] = encoder[row[column_index]]
 

@@ -3,7 +3,7 @@ Models used to establish baseline performance on a predictive algorithm.
 Provides a point of comparison for evaluating more advanced algorithms.
 - Random Prediction Algorithm
 - Zero Rule Algorithm
-For both these models, it doesn't matter what the test data is
+For both these models, it doesn't matter what the test data is.
 """
 
 from typing import List
@@ -12,8 +12,8 @@ from random import choice, seed
 
 def random_algorithm(train: List, test: List) -> List:
     """
-    returns a list of random predictions for the test set
-    works for both regression and classification
+    - returns a list of random predictions for the test set
+    - works for both regression and classification
     """
     possible_predictions: List = list(set(row[-1] for row in train))
     predicted_values: List = [choice(possible_predictions) for i in range(len(test))]
@@ -22,8 +22,8 @@ def random_algorithm(train: List, test: List) -> List:
 
 def zero_rule_algorithm_classification(train: List, test: List) -> List:
     """
-    calculates the most frequently occurring class in the train set and
-    predicts this value for all observations in the test set
+    - calculates the most frequently occurring class in the train set
+    - predicts this value for all observations in the test set
     """
     train_outputs: List = [row[-1] for row in train]
     prediction: int = max(train_outputs, key=train_outputs.count)
@@ -33,9 +33,9 @@ def zero_rule_algorithm_classification(train: List, test: List) -> List:
 
 def zero_rule_algorithm_regression(train: List, test: List) -> List:
     """
-    a good default prediction for real values is the central tendency (mean)
-    calculates the mean of output values in the training data and
-    predicts this value for all observations in the test set
+    - a good default prediction for real values is the central tendency (mean)
+    - calculates the mean of output values in the training data
+    - predicts this value for all observations in the test set
     """
     train_outputs: List = [row[-1] for row in train]
     # calculate the mean of train_outputs and assign to prediction
