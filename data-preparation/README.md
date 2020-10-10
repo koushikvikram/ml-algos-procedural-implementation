@@ -14,10 +14,10 @@
 * [k-fold Cross Validation Split](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/algo_validation_methods.py#L27-L39)
 
 ## 4. [Evaluation Metrics](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py)
-* [Classification accuracy]()
-* [Confusion Matrix]()
-* [Mean Absolute Error for Regression]()
-* [Room Mean Squared Error for Regression]()
+* [Classification accuracy](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py#L15-L24)
+* [Confusion Matrix](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py#L38-L49)
+* [Mean Absolute Error for Regression](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py#L62-L71)
+* [Room Mean Squared Error for Regression](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/evaluation_metrics.py#L74-L84)
 
 ## 5. [Baseline Models](https://github.com/koushikvikram/ml-algos-procedural-implementation/blob/master/data-preparation/baseline_models.py)
 * [Random Prediction Algorithm]()
